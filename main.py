@@ -16,13 +16,13 @@ def verificar_saldo():
 #Função para realizar saque
 def realizar_saque(amount):
     global saldo_atual, saques_diarios
-    if saques_diarios >= QUANTIDADE_SAQUE_DIARIO: #
+    if saques_diarios >= QUANTIDADE_SAQUE_DIARIO: #implementa a quantidade diária de saques
         print('Limite de saques excedido. Tente novamente amanhã')
         return
-    if amount > QUANTIDADE_SAQUE_VALOR:
+    if amount > QUANTIDADE_SAQUE_VALOR: #implementa o valor máximo de saque por transação
         print('O valor máximo para saque é de R$ {:.2f}'.format(QUANTIDADE_SAQUE_VALOR))
         return
-    if amount <= saldo_atual:
+    if amount <= saldo_atual: #mostra o valor do saque e o saldo atual após o saque
         saldo_atual -= amount
         extrato.append('Saque: R$ {:.2f}'.format(saldo_atual))
         saques_diarios += 1
