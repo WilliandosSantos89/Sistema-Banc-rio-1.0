@@ -32,6 +32,21 @@ def ver_historico_transacoes():
         print(transacoes)
 
 #Menu principal
+while True:
+    print('\nBem vindo(a)\n')
+    opcoes = input('Escolha uma das opções:\n')
+    print('1. Verificar Saldo')
+    print('2. Realizar Saque')
+    print('3. Realizar Depósito')
+    print('4. Ver Extrato')
+    print('5. Sair')
+
+    if opcoes == '1':
+        
+
+
+        
+
 
 
 
