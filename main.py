@@ -11,7 +11,7 @@ QUANTIDADE_SAQUE_VALOR = 500
 
 #Funções para as operações
 def verificar_saldo():
-    print('Seu saldo atual é de {:.2f}'.format(saldo_atual))
+    print('Seu saldo atual é de R${:.2f}'.format(saldo_atual))
 
 #Função para realizar saque
 def realizar_saque(amount):
@@ -20,11 +20,13 @@ def realizar_saque(amount):
         print('Limite de saques excedido. Tente novamente amanhã')
         return
     if amount > QUANTIDADE_SAQUE_VALOR:
-        print('O valor máximo de saque é de R$ {:.2f}'.format(QUANTIDADE_SAQUE_VALOR))
+        print('O valor máximo para saque é de R$ {:.2f}'.format(QUANTIDADE_SAQUE_VALOR))
         return
     if amount <= saldo_atual:
         saldo_atual -= amount
-        extrato.append('Saque realizado com sucesso. Novo saldo: R$ {:.2f}'.format(saldo_atual))
+        extrato.append('Saque: R$ {:.2f}'.format(saldo_atual))
+        saques_diarios += 1
+        print('Saque realizado com sucesso. Novo saldo: R$ {:.2f}'.format(saldo_atual))
     
 
 #Função para realizar depósitos
