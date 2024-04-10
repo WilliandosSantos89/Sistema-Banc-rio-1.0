@@ -26,7 +26,7 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir problemas ou env
 **Licença**
 
 Este projeto está licenciado sob a Licença MIT - consulte o arquivo LICENSE para obter detalhes.
-![One]([https://www.dio.me/](https://web.dio.me/track/coding-future-vivo-python-ai-backend-developer)).
+([https://www.dio.me/](https://web.dio.me/track/coding-future-vivo-python-ai-backend-developer)).
 
 [![Link do Bootcamp](https://img.shields.io/badge/▶-000?style=for-the-badge&logo=movie&logoColor=E94D5F)](https://web.dio.me/track/coding-future-vivo-python-ai-backend-developer) 
 [![Link do Bootcamp](https://img.shields.io/badge/Acesse%20o%20Boobtcamp%20na%20Plataforma-E94D5F?style=for-the-badge)](https://web.dio.me/track/coding-future-vivo-python-ai-backend-developer)
