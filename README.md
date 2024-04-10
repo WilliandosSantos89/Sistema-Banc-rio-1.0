@@ -4,7 +4,29 @@
     <span> Desafio de  Módulo - Construindo um sistema bancário</span>
 </h1>
 
-Repositório desenvolvido para fins didáticos e de estudo. Realizado para o Bootcamp **Python AI Backend Developer (Vivo)** da [Digital Innovation One]([https://www.dio.me/](https://web.dio.me/track/coding-future-vivo-python-ai-backend-developer)).
+Repositório desenvolvido para fins didáticos e de estudo. Realizado para o Bootcamp **Python AI Backend Developer (Vivo)** da [Digital Innovation.
+
+Este é um sistema bancário simples em Python que permite verificar o saldo, fazer saques, depósitos, visualizar o extrato e sair.
+
+Algumas restrições de saque:
+
+- Apenas 3 saques diários são permitidos.
+- O valor máximo de saque é de R$500.
+
+**Como usar**
+
+1. Certifique-se de ter o Python instalado.
+2. Execute o arquivo `main.py`.
+3. Siga as instruções no menu para realizar operações bancárias.
+
+**Contribuição**
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir problemas ou enviar solicitações de pull.
+
+**Licença**
+
+Este projeto está licenciado sob a Licença MIT - consulte o arquivo LICENSE para obter detalhes.
+ One]([https://www.dio.me/](https://web.dio.me/track/coding-future-vivo-python-ai-backend-developer)).
 
 [![Link do Bootcamp](https://img.shields.io/badge/▶-000?style=for-the-badge&logo=movie&logoColor=E94D5F)](https://web.dio.me/track/coding-future-vivo-python-ai-backend-developer) 
 [![Link do Bootcamp](https://img.shields.io/badge/Acesse%20o%20Boobtcamp%20na%20Plataforma-E94D5F?style=for-the-badge)](https://web.dio.me/track/coding-future-vivo-python-ai-backend-developer)
