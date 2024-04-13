@@ -1,6 +1,6 @@
 <h1>
     <a href="https://www.dio.me/">
-     <img align="center" width="40px" src="https://hermes.digitalinnovation.one/assets/diome/logo-minimized.png"></a>
+     <img align="center" width="35px" src="https://hermes.digitalinnovation.one/assets/diome/logo-minimized.png"></a>
     <span> Desafio de  Módulo - Construindo um sistema bancário</span>
 </h1>
 
