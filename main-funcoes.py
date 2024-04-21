@@ -70,3 +70,5 @@ def criar_usuário(usuarios):
     usuarios.append({'nome': nome,'data_nascimento': data_nascimento, 'cpf': cpf, 'endereco': endereco})
 
     print(' ==== Usuário criado com sucesso! ====')
+
+def filtrar_usuario(cpf, usuarios):
