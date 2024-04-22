@@ -76,14 +76,14 @@ def filtrar_usuario(cpf, usuarios):
     return usuarios_filtrados[0] if usuarios_filtrados else None
 
 def criar_conta(agencia, numero_conta, usuarios):
-    cpf = input('Informe o CPF  do usuários: ')
+    cpf = input('Informe o CPF  do usuário: ')
     usuario = filtrar_usuario(cpf, usuarios)
 
     if usuario:
         print('\n=== Conta criada com sucesso! ===')
         return {'agencia': agencia, 'numero_conta': numero_conta, 'usuario': usuario}
 
-    print('@@@ Usuário não encontrado! Fluxo de criação de conta errado. @@@')
+    print('\n@@@ Usuário não encontrado! Fluxo de criação de conta errado. @@@')
 
 def listar_contas(contas):
 
@@ -98,13 +98,13 @@ def listar_contas(contas):
         print(textwrap.dedent(linha))
 
 def main():
-    LIMITE_SAQUES: 3
-    AGENCIA: '0001'
+    LIMITE_SAQUES = 3
+    AGENCIA = '0001'
 
     saldo = 0
     limite = 500
     extrato = ''
-    numeros_saques = 0
+    numero_saques = 0
     usuarios = []
     contas = []
 
@@ -114,13 +114,18 @@ def main():
         if opcao == 'd':
             valor = float(input('Informe o valor do depósito: R$ '))
 
+            saldo, extrato = depositar(saldo, valor, extrato)
+
+        elif opcao == 's':
+            valor = float(input('Informe o valor do saque: R$ '))
+
             saldo, extrato = sacar(
                 saldo = saldo,
                 valor = valor,
                 extrato = extrato,
                 limite = limite,
-                numeros_saques = numeros_saques,
-                LIMITE_SAQUES = LIMITE_SAQUES,
+                numero_saques = numero_saques,
+                limite_saques = LIMITE_SAQUES,
             )
 
         elif opcao == 'e':
