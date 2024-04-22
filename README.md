@@ -19,6 +19,10 @@ Algumas restrições de saque:
 2. Execute o arquivo `main.py`.
 3. Siga as instruções no menu para realizar operações bancárias.
 
+**Observação**
+
+1. O arquivo `main-funcoes.py` contém a versão do mesmo código com adição de funções e validação de dados.
+
 **Contribuição**
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir problemas ou enviar solicitações de pull.

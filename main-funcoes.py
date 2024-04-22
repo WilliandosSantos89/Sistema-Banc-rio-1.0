@@ -1,5 +1,7 @@
 import textwrap
+from datetime import datetime
 
+#Função para criar menu
 def menu():
     menu = """\n
     =========== MENU ===========
@@ -13,6 +15,7 @@ def menu():
     => """
     return input(textwrap.dedent(menu))
 
+#Função depoisitar
 def depositar(saldo, valor, extrato, /):
     if valor > 0:
         saldo += valor
@@ -23,6 +26,7 @@ def depositar(saldo, valor, extrato, /):
 
     return saldo, extrato
 
+#Função sacar
 def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
     excedeu_saldo = valor > saldo
     excedeu_limite = valor > limite
@@ -48,6 +52,7 @@ def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
 
     return saldo, extrato
 
+#Função para exibir extrato
 def exibir_extrato(saldo, /, *, extrato):
 
     print('\n============ EXTRATO ============')
@@ -55,26 +60,65 @@ def exibir_extrato(saldo, /, *, extrato):
     print(f'\nSaldo:\t\tR$ {saldo:.2f}')
     print('===================================')
 
+#Função para validar CPF
+def validar_cpf(cpf):
+    #Verifica se o CPF contém 11 dígitos
+    return len(cpf) == 11 and cpf.isdigit()
+
+#Função para validar data no formato dd-mm-aaaa
+def validar_data(date_text):
+    try:
+        datetime.strptime(date_text, '%d-%m-%Y')
+        return True
+    except ValueError:
+        return False
+    
+#Função para validar nome completo (pelo menos dois nomes)
+def validar_nome(name):
+    return len(name.split()) >= 2
+
+#Função para validar endereço (não vazio e conter pelo menos duas vírgulas)
+def validar_endereco(address):
+    return len(address) > 0 and address.count(',') >= 2
+
+#Função para criar usuários
 def criar_usuário(usuarios):
     cpf = input('Informe o CPF (somente números): ')
+    if not validar_cpf(cpf):
+        print('@@@ CPF inválido. Deve conter pelo menos 11 dígitos. @@@')
+        return
+    
     usuario = filtrar_usuario(cpf, usuarios)
-
+    
     if usuario:
         print('\n@@@ Já existe um usuário com esse CPF! @@@')
         return
     
     nome = input('Informe o nome completo: ')
-    data_nascimento = ('Informe a data de nascimento (dd-mm-aaaa): ')
+    if not validar_nome(nome):
+        print('@@@ Nome inválido. Deve conter pelo menos dois nomes. @@@')
+        return
+
+    data_nascimento = input('Informe a data de nascimento (dd-mm-aaaa): ')
+    if not validar_data(data_nascimento):
+        print('@@@ Data de nascimento inválida. Deve ser no formato dd-mm-aaaa @@@')
+        return
+
     endereco = input('Informe o endereço (logradouro, nro - bairro - cidade/sigla estado: )')
+    if not validar_endereco(endereco):
+        print('@@@ Endereço incompleto. Separe por vírgula. @@@')
+        return
 
     usuarios.append({'nome': nome,'data_nascimento': data_nascimento, 'cpf': cpf, 'endereco': endereco})
 
     print(' ==== Usuário criado com sucesso! ====')
 
+#Função par filtrar usuários já criados
 def filtrar_usuario(cpf, usuarios):
     usuarios_filtrados = [usuario for usuario in usuarios if usuario['cpf']== cpf]
     return usuarios_filtrados[0] if usuarios_filtrados else None
 
+#Função para criar contas
 def criar_conta(agencia, numero_conta, usuarios):
     cpf = input('Informe o CPF  do usuário: ')
     usuario = filtrar_usuario(cpf, usuarios)
@@ -85,6 +129,7 @@ def criar_conta(agencia, numero_conta, usuarios):
 
     print('\n@@@ Usuário não encontrado! Fluxo de criação de conta errado. @@@')
 
+#Função para criar contas
 def listar_contas(contas):
 
 
@@ -97,6 +142,7 @@ def listar_contas(contas):
         print('=' * 100)
         print(textwrap.dedent(linha))
 
+#Função principal do código
 def main():
     LIMITE_SAQUES = 3
     AGENCIA = '0001'
