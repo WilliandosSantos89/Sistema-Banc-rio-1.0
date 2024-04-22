@@ -72,3 +72,25 @@ def criar_usuário(usuarios):
     print(' ==== Usuário criado com sucesso! ====')
 
 def filtrar_usuario(cpf, usuarios):
+    usuarios_filtrados = [usuario for usuarios if usuario['cpf']== cpf]
+    return usuarios_filtrados[0] if usuarios_filtrados else None
+
+def criar_conta(agencia, numero_conta, usuarios):
+    cpf = input('Informe o CPF  do usuários: ')
+    usuario = filtrar_usuario(cpf, usuarios)
+
+    if usuario:
+        print('\n=== Conta criada com sucesso! ===')
+        return{'agencia'= agencia, 'numero_conta'= numero_conta, 'usuario'= usuario}
+
+    print('@@@ Usuário não encontrado! Fluxo de criação de conta errado. @@@')
+
+def listar_contas(contas):
+    for conta in contas:
+        linha = f"""\
+                Agência:\t{conta['agencia']}
+                CC:\t\t{conta['numero_conta']}
+                Titular:\t{conta['usuario']['nome']}
+        """
+        print('=' * 100)
+        print(textwrap.dedent(linha))
