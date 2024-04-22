@@ -20,7 +20,8 @@ Algumas restrições de saque:
 3. Siga as instruções no menu para realizar operações bancárias.
 
 **Observação**
-O arquivo `main-funcoes.py` contém a versão do mesmo código com adição de funções e validação de dados.
+
+1. O arquivo `main-funcoes.py` contém a versão do mesmo código com adição de funções e validação de dados.
 
 **Contribuição**
 
