@@ -1,4 +1,5 @@
 import textwrap
+from datetime import datetime
 
 def menu():
     menu = """\n
@@ -55,17 +56,54 @@ def exibir_extrato(saldo, /, *, extrato):
     print(f'\nSaldo:\t\tR$ {saldo:.2f}')
     print('===================================')
 
+#Função para validar CPF
+def validar_cpf(cpf):
+    #Verifica se o CPF contém 11 dígitos
+    return len(cpf) == 11 and cpf.isdigit()
+
+#Função para validar data no formato dd-mm-aaaa
+def validar_data(date_text):
+    try:
+        datetime.striptime(date_text, '%d-%m-%Y')
+        return True
+    except ValueError:
+        return False
+    
+#Função para validar nome completo (pelo menos dois nomes)
+def validar_nome(name):
+    return len(name.split()) >= 2
+
+#Função para validar endereço (não vazio e conter pelo menos duas vírgulas)
+def validar_endereco(address):
+    return len(address) > 0 and address.count(',') >= 2
+
+#Função para criar usuários
 def criar_usuário(usuarios):
     cpf = input('Informe o CPF (somente números): ')
+    if not validar_cpf(cpf):
+        print('@@@ CPF inválido. Deve conter pelo menos 11 dígitos. @@@')
+        return
+    
     usuario = filtrar_usuario(cpf, usuarios)
-
+    
     if usuario:
         print('\n@@@ Já existe um usuário com esse CPF! @@@')
         return
     
     nome = input('Informe o nome completo: ')
+    if not validar_nome(nome):
+        print('@@@ Nome inválido. Deve conter pelo menos dois nomes. @@@')
+        return
+
     data_nascimento = ('Informe a data de nascimento (dd-mm-aaaa): ')
+    if not validar_data(data_nascimento):
+        print('@@@ Data de nascimento inválida. Deve ser no formato dd-mm-aaaa @@@')
+        return
+
     endereco = input('Informe o endereço (logradouro, nro - bairro - cidade/sigla estado: )')
+    if not validar_endereco(endereco):
+        print('@@@ Endereço incompleto. Separe por vírgula. @@@')
+        return
 
     usuarios.append({'nome': nome,'data_nascimento': data_nascimento, 'cpf': cpf, 'endereco': endereco})
 
