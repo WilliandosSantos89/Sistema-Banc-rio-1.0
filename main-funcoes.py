@@ -64,7 +64,7 @@ def validar_cpf(cpf):
 #Função para validar data no formato dd-mm-aaaa
 def validar_data(date_text):
     try:
-        datetime.striptime(date_text, '%d-%m-%Y')
+        datetime.strptime(date_text, '%d-%m-%Y')
         return True
     except ValueError:
         return False
@@ -95,7 +95,7 @@ def criar_usuário(usuarios):
         print('@@@ Nome inválido. Deve conter pelo menos dois nomes. @@@')
         return
 
-    data_nascimento = ('Informe a data de nascimento (dd-mm-aaaa): ')
+    data_nascimento = input('Informe a data de nascimento (dd-mm-aaaa): ')
     if not validar_data(data_nascimento):
         print('@@@ Data de nascimento inválida. Deve ser no formato dd-mm-aaaa @@@')
         return
