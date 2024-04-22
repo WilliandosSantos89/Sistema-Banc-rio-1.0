@@ -1,6 +1,7 @@
 import textwrap
 from datetime import datetime
 
+#Função para criar menu
 def menu():
     menu = """\n
     =========== MENU ===========
@@ -14,6 +15,7 @@ def menu():
     => """
     return input(textwrap.dedent(menu))
 
+#Função depoisitar
 def depositar(saldo, valor, extrato, /):
     if valor > 0:
         saldo += valor
@@ -24,6 +26,7 @@ def depositar(saldo, valor, extrato, /):
 
     return saldo, extrato
 
+#Função sacar
 def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
     excedeu_saldo = valor > saldo
     excedeu_limite = valor > limite
@@ -49,6 +52,7 @@ def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
 
     return saldo, extrato
 
+#Função para exibir extrato
 def exibir_extrato(saldo, /, *, extrato):
 
     print('\n============ EXTRATO ============')
@@ -109,10 +113,12 @@ def criar_usuário(usuarios):
 
     print(' ==== Usuário criado com sucesso! ====')
 
+#Função par filtrar usuários já criados
 def filtrar_usuario(cpf, usuarios):
     usuarios_filtrados = [usuario for usuario in usuarios if usuario['cpf']== cpf]
     return usuarios_filtrados[0] if usuarios_filtrados else None
 
+#Função para criar contas
 def criar_conta(agencia, numero_conta, usuarios):
     cpf = input('Informe o CPF  do usuário: ')
     usuario = filtrar_usuario(cpf, usuarios)
@@ -123,6 +129,7 @@ def criar_conta(agencia, numero_conta, usuarios):
 
     print('\n@@@ Usuário não encontrado! Fluxo de criação de conta errado. @@@')
 
+#Função para criar contas
 def listar_contas(contas):
 
 
@@ -135,6 +142,7 @@ def listar_contas(contas):
         print('=' * 100)
         print(textwrap.dedent(linha))
 
+#Função principal do código
 def main():
     LIMITE_SAQUES = 3
     AGENCIA = '0001'
