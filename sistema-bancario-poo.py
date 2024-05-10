@@ -1,3 +1,4 @@
+import textwrap
 from abc import ABC, abstractclassmethod, abstractproperty
 from datetime import datetime
 
@@ -207,7 +208,7 @@ def depositar(clientes):
 
 def sacar(cliente):
     cpf = input('Informe o CPF do clinte: ')
-    cliente = filtrar_cliente(cpf, clientes)
+    cliente = filtrar_cliente(cpf, cliente)
 
     if not cliente:
         print('\n@@@ Cliente não encontrado! @@@')
@@ -242,7 +243,7 @@ def exibir_extrato(clientes):
 
     else:
         for transacao in transacoes:
-            extrato += f'\n{transacao['tipo']}:\n\tR$ {transacao['valor']:.2f}'
+            extrato += f"\n{transacao['tipo']}:\n\tR$ {transacao['valor']:.2f}"
 
     print(extrato)
     print(f'\nSaldo:\n\tR$ {conta.saldo:.2f} ')
