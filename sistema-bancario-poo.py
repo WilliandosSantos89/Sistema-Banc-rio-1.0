@@ -246,7 +246,7 @@ def exibir_extrato(clientes):
 
     print(extrato)
     print(f'\nSaldo:\n\tR$ {conta.saldo:.2f} ')
-    print(20*'=')
+    print('=' * 20)
 
 def criar_cliente(clientes):
     cpf = input('Informe o CPF (somente números): ')
@@ -279,4 +279,43 @@ def criar_conta(numero_conta, clientes, contas):
     cliente.contas.append(conta)
 
     print('\n*** Conta Criada com sucesso! *** ')
+
+def listar_contas(contas):
+    for conta in contas:
+        print('=' * 100)
+        print(textwrap.dedent(str(conta)))
+
+def main():
+    clientes = []
+    contas = []
+
+    while True:
+        opcao = menu()
+
+        if opcao == 'd':
+            depositar(clientes)
+
+        elif opcao == 's':
+            sacar(clientes)
+
+        elif opcao == 'e':
+            exibir_extrato(clientes)
+
+        elif opcao == 'nu':
+            criar_cliente(clientes)
+
+        elif opcao == 'nc':
+            numero_conta = len(contas) + 1
+            criar_conta(numero_conta, clientes, contas)
+
+        elif opcao == 'lc':
+            listar_contas(contas)
+
+        elif opcao == 'q':
+            break
+
+        else:
+            print('\n@@@ Operação inválida, por favor, selecione outra opção. @@@')
+
+main()
 
