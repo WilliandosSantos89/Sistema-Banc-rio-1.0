@@ -131,7 +131,7 @@ class Historico:
 
 class Transacao(ABC):
     @property
-    @abstractmethod
+    @abstractproperty
     def valor(self):
         pass
 
@@ -142,3 +142,23 @@ class Transacao(ABC):
 class Saque(Transacao):
     def __init__(self, valor):
         self._valor = valor
+
+    @property
+    def valor(self):
+        return self._valor
+    
+    def registrar(self, conta):
+        sucesso_transacao = conta.sacar(self.valor)
+
+        if sucesso_transacao:
+            conta.historico.adicionar_transacao(self)
+
+class Deposito(Transacao):
+    def __init__(self, valor):
+        self._valor = valor
+
+    def registrar(self, conta):
+        sucesso_transacao = conta.depositar(self.valor)
+
+        if sucesso_transacao:
+            conta.historico.adicionar_transacao(self)
